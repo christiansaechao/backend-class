@@ -1,0 +1,28 @@
+// npx prisma init
+// npx prisma format
+// npx prisma generate
+// npx prisma migrate dev --name init
+// npx prisma studio (to view the database)
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id        Int    @id @default(autoincrement())
+  email     String @unique
+  firstName String
+  lastName  String
+  password  String
+}
+
+model Jokes {
+  id        Int    @id @default(autoincrement())
+  question  String @unique
+  punchline String
+  type String 
+}
